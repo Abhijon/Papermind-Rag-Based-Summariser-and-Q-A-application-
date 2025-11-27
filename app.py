@@ -5,6 +5,9 @@ import os
 
 app = Flask(__name__)
 
+# Configure maximum upload size (100 MB)
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB in bytes
+
 @app.route('/', methods=['POST', 'GET'])
 def main():
     return render_template("index.html")
@@ -216,6 +219,14 @@ def cleanup_old_temp_files(max_age_hours=24):
                     print(f"Deleted old file: {filepath}")
     except Exception as e:
         print(f"Error during cleanup: {e}")
+
+@app.errorhandler(413)
+def request_entity_too_large(error):
+    """Handle file size exceeding the maximum limit"""
+    return jsonify({
+        'result': 'Error: File size exceeds the maximum limit of 100MB. Please upload a smaller file.'
+    }), 413
+
 
 if __name__ == '__main__':
     # Clean up old temporary files on startup
