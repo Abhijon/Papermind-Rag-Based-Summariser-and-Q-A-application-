@@ -1,0 +1,576 @@
+ 
+       
+ 
+         SKILL SPHERE: SKILL –BASED HIRING PORTAL  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+   
+ 
+           
+ 
+  
+         UNIVERSITY OF ENGINEERING AND MANAGEMENT, 
+                                                JAIPUR 
+ 
+ 
+
+1 
+ 
+ 
+ 
+SKILL SPHERE: SKILL-BASED HIRING PORTAL 
+Submitted in the partial fulfillment of the degree of 
+BACHELOR OF TECHNOLOGY 
+IN 
+COMPUTER SCIENCE AND ENGINEERING 
+UNDER 
+UNIVERSITY OF ENGINEERING AND MANAGEMENT, 
+JAIPUR 
+BY 
+ABHIJON CHATTERJEE 
+Enrollment No: 12022002001145 
+ANKUSH KUMAR MALLICK 
+Enrollment No: 12022002001136 
+SANKALP SINGH 
+Enrollment No: 12022002021138 
+UNDER THE GUIDANCE OF 
+Prof. SANTANU BASAK 
+COMPUTER SCIENCE AND ENGINEERING 
+ 
+ 
+                                    
+UNIVERSITY OF ENGINEERING AND MANAGEMENT, JAIPUR 
+ 
+ 
+ 
+
+2 
+ 
+APPROVAL CERTIFICATE 
+ 
+This is to certify that the project report entitled “SKILL SPHERE-SKILL BASED 
+HIRING PORTAL” submitted by Abhijon Chatterjee (12022002001145), Ankush 
+Kumar Mallick (12022002001136), Sankalp Singh (12022002021138) in partial fulfilment 
+of the requirements of the degree of Bachelor of Technology in Computer Science & 
+Engineering from University of Engineering and Management, Jaipur was carried out in 
+a systematic and procedural manner to the best of our knowledge. It is a bona fide work of 
+the candidate and was carried out under our supervision and guidance during the academic 
+session of 2025-2026. 
+ 
+_______________________  
+Prof. Santanu Basak    
+Project guide, Assistant Professor (CSE)  
+UEM, JAIPUR  
+ 
+_______________________   
+  
+  
+  
+  
+ Prof. G Uma Devi 
+  
+  
+  
+                 
+ Head of the Department (CSE)  
+ Associate Dean of Engineering 
+  
+  
+  
+                                                    
+ UEM, JAIPUR  
+  
+  
+  
+                                              
+  
+  
+ 
+.  
+ 
+ 
+ 
+ 
+ 
+
+3 
+ 
+ 
+ACKNOWLEDGEMENT 
+The endless thanks goes to Lord Almighty for all the blessings he has showered onto me, 
+which has enabled me to write this last note in my research work. During the period of my 
+research, as in the rest of my life, I have been blessed by Almighty with some extraordinary 
+people who have spun a web of support around me. Words can never be enough in expressing 
+how grateful I am to those incredible people in my life who made this thesis possible. I would 
+like an attempt to thank them for making my time during my research in the Institute a period 
+I will treasure. I am deeply indebted to my project supervisor, Prof. Santanu Basak me such 
+an interesting thesis topic. Each meeting with him added in valuable aspects to the 
+implementation and broadened my perspective. He has guided me with his invaluable 
+suggestions, lightened up the way in my darkest times and encouraged me a lot in the 
+academic life.   
+ 
+ 
+Abhijon Chatterjee (12022002001145) 
+Ankush Kumar Mallick (12022002001136) 
+Sankalp Singh (12022002001138) 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+4 
+ 
+                                                      ABSTRACT 
+ 
+This project is a comprehensive online job portal developed to streamline, simplify, and 
+automate the end-to-end recruitment process. It enables recruiters to register, post job 
+vacancies, and assess potential candidates through built-in online assessments tailored to each 
+role. Candidates can create profiles, browse job openings, apply to positions, and take 
+relevant tests directly on the platform. Based on the candidate’s performance in these 
+assessments, recruiters can make informed hiring decisions. The system automatically sends 
+real-time email notifications to candidates regarding their selection or rejection, ensuring 
+clear and prompt communication. To maintain security and usability, the platform 
+incorporates role-based access control, ensuring separate functionalities and dashboards for 
+recruiters and applicants. Additionally, the portal is designed for user-friendliness, scalability, 
+and efficient data management. By automating crucial steps like application review and 
+communication, this system bridges the gap between skilled candidates and employers, 
+making the recruitment journey faster, more transparent, and highly effective for both parties. 
+ 
+ 
+ 
+ 
+
+5 
+ 
+                                  TABLE OF CONTENTS                       
+ 
+TABLE OF CONTENTS                                                                                                  5                                            
+LIST OF FIGURES                                                                                                           6 
+1. CHAPTER                                                                                                                   7 
+INTRODUCTION                                                                                                             7 
+     1.1  A Brief Introduction to Skill Sphere(An E-Job Portal)                                         7 
+     1.2  Reason behind the Usage of Skill Sphere (An E-Job Portal)                                8 
+     1.3  Software Requirement Specification (SRS) Of the System                                  8  
+1.4  Traditional Hiring VS Modern Hiring                                                                  9 
+ LITERATURE REVIEW                                                                                               10   
+ 2.  CHAPTER                                                                                                                 12 
+ FUNCTIONALITIES OF SKILL SPHERE(E-JOB PORTAL)                                    12 
+     2.1  Building The Frontend Logic For The Website                                                  12 
+     2.2  Setting Up The Backend And The Database                                                       14 
+2.3  Connecting The backend with Frontend With Axios                                          15 
+     2.4  Seamless hiring with real-time email alerts                                                        17 
+  MODEL VIEW CONTROLLER (MVC) DIAGRAM                                                 18 
+   3.CHAPTER                                                                                                                 19 
+   RESULTS AND DISCUSSIONS                                                                                19 
+   CONCLUSION AND FUTURE SCOPE                                                                    22 
+   APPENDIX                                                                                                                  23 
+   BIBLIOGRAPHY                                                                                                        26 
+ 
+ 
+ 
+
+6 
+ 
+                                                       
+                                                  LIST OF FIGURES 
+ 
+Figure 2.1     Model View Controller Diagram                                                                 18 
+Figure 3.1     Viewing the UI of the Skill Sphere Website                                                19 
+Figure 3.2     Viewing the Recruiter Dashboard                                                                19 
+Figure 3.3     Job Application Page                                                                                    20 
+Figure 3.4     Job Postal Page                                                                                             20 
+Figure 3.5    Assessment Page                                                                                            21 
+Figure 3.6    Application Status Page                                                                                 21 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+7 
+ 
+1. CHAPTER  
+                                                            INTRODUCTION  
+1.1  A Brief Introduction to Skill Sphere(E-Job Portal) 
+The Skill Sphere(E-Job Portal System) has been developed to overcome the limitations of 
+traditional recruitment methods. This software aims to simplify and automate the hiring 
+process by providing a digital platform where recruiters can post job openings, conduct skill-
+based assessments, and make informed hiring decisions. It also facilitates candidates in 
+applying for jobs, completing assessments, and receiving real-time updates about their 
+application status via email. 
+System Features: 
+ 
+Provides real-time email notifications to candidates based on assessment results. 
+ 
+Supports job posting, application tracking, and assessment management for recruiters. 
+ 
+Displays detailed job descriptions, requirements, and company information for 
+applicants. 
+ 
+Implements role-based access for recruiters and candidates. 
+ 
+Automates communication between recruiters and candidates. 
+ 
+Enables performance-based filtering to support skill-based hiring. 
+ 
+Ensures secure handling of user data and assessment scores. 
+Modules in the Job Portal System: 
+ 
+Recruiter Management Module: Manages recruiter registration, job postings, and 
+applicant tracking. 
+ 
+Candidate Module: Allows candidates to register, apply for jobs, and take skill 
+assessments. 
+ 
+Assessment Module: Facilitates creation, distribution, and evaluation of job-specific 
+tests. 
+ 
+Job Posting Module: Handles creation, editing, and display of job opportunities. 
+ 
+Application Management Module: Manages applications, test results, and recruiter 
+decisions. 
+
+8 
+ 
+ 
+Email Notification Module: Sends real-time emails to candidates based on selection 
+or rejection. 
+ 
+Login & Authentication Module: Secures access using role-based login with 
+encrypted credentials 
+1.2  Reason behind the Usage of Skill Sphere(An E-Job Portal) 
+The main objective of the Skill Sphere(E-Job System) is to manage the complete lifecycle 
+of recruitment, including details of Recruiters, Candidates, Job Postings, Applications, 
+Assessments, and Real-Time Notifications. It centralizes all the information related to job 
+opportunities, candidate applications, recruiter actions, and assessment outcomes. The system 
+is primarily designed for the administrative end, where recruiters and candidates have 
+separate roles with specific access. The main purpose of this project is to eliminate manual 
+tasks involved in traditional hiring, such as resume filtering, email communication, and 
+scheduling, by automating them through a single web-based platform. It tracks all essential 
+information including job descriptions, applicant performance, application status, and 
+recruiter decisions. The goal of the Job Portal System is to digitally transform the manual 
+recruitment process with the help of modern web technologies and real-time tools, ensuring 
+data is secure, easily accessible, and efficiently managed over time. The system is built using 
+the MERN stack (Mongo DB, Express.js, React.js, Node.js)—which is open-source, 
+widely supported, and developer-friendly. Both software and hardware requirements are 
+minimal, making the system cost-effective, scalable. 
+1.3  Software Requirement Specification (SRS) Of the System 
+The Software Requirements Specification (SRS) is prepared after the completion of the 
+system analysis phase. It defines the functional and non-functional requirements allocated to 
+the software during system engineering. It includes a complete description of the system’s 
+information flow, functionalities, performance expectations, design limitations, and 
+validation criteria necessary for successful implementation. 
+The proposed Online Job Portal System has the following key software requirements: 
+ 
+The system must store information about newly registered Recruiters and Candidates. 
+
+9 
+ 
+ 
+The system must allow Recruiters to post jobs, manage applications, and conduct 
+assessments. 
+ 
+The system must help recruiters filter and find candidates based on test performance 
+and job criteria. 
+ 
+The system must manage the data related to Job Postings, Applications, and 
+Assessments. 
+ 
+The system must support real-time email notifications based on application status 
+(selected/rejected). 
+ 
+The system must allow editing, updating, and deleting of job posts and user data. 
+ 
+The system should implement role-based access to ensure secure and restricted 
+functionality for recruiters and candidates. 
+ 
+It also requires a security mechanism to prevent unauthorized access and to ensure 
+that user data such as emails, assessment scores, and personal details are protected 
+even in the event of a database breach. 
+1.4  Traditional  Method VS Modern Approach 
+The traditional hiring process relied heavily on manual screening of resumes, shortlisting 
+candidates based on qualifications, and conducting multiple rounds of interviews without any 
+structured assessment of actual skills. This non-skill-based hiring method had several 
+drawbacks. The process of shortlisting candidates based on resumes was time-consuming, 
+inconsistent, and often biased. Important details were scattered across emails and 
+spreadsheets, and there was no standardized way to evaluate whether a candidate truly 
+possessed the required skills for the role. Generating reports, tracking applications, and 
+communicating with candidates involved a lot of repetitive tasks and manual effort. 
+Furthermore, the absence of assessment tools meant recruiters often relied on assumptions or 
+lengthy interviews to judge skills, leading to potential mismatches in hiring.In contrast, the 
+modern approach of skill-based hiring, as implemented in the Online Job Portal System, 
+automates the entire process. It allows recruiters to assess candidates through customized 
+online tests, filter them based on performance, and send real-time email notifications. This 
+not only reduces manual workload but also ensures objective, data-driven decisions. The 
+system eliminates redundancy, reduces hiring time, and increases accuracy in candidate 
+selection by focusing on what truly matters—skills and capabilities. 
+
+10 
+ 
+                                            LITERATURE REVIEW   
+1. Pinjari, M., De, N., Kokne, R., Siddiqui, A., & Chitre, D. (2019). Online Job Portal. 
+International Research Journal of Engineering and Technology[1] 
+The paper titled "Online Job Portal" by Pinjari, De, Kokne, Siddiqui, and Chitre (2019) 
+presents the development of a web-based platform designed to streamline the employment 
+process by connecting job seekers with employers. The system allows candidates to create 
+profiles, upload resumes, and apply for job openings, while employers can post job vacancies 
+and search for suitable candidates. The platform aims to enhance the efficiency of the 
+recruitment process by providing a user-friendly interface and automating various tasks 
+associated with job searching and hiring. Key features include user authentication, job search 
+functionality, and application tracking. The authors discuss the system's architecture, 
+implementation details, and the technologies used in its development. They conclude that the 
+online job portal effectively bridges the gap between job seekers and employers, offering a 
+more organized and accessible approach to employment opportunities 
+2. Chowdhury, A. R., Areias, A. C., Imaizumi, S., Nomura, S., & Yamauchi, F. (2018). 
+Reflections of employers' gender preferences in job ads in India: an analysis of online job 
+portal data. World Bank Policy Research Working Paper, (8379)[2] 
+The paper titled “Online Job Portal” by Pinjari, De, Kokne, Siddiqui, and Chitre (2019), 
+published in the International Research Journal of Engineering and Technology, presents the 
+design and development of an online platform aimed at simplifying and enhancing the 
+recruitment process. The study outlines the challenges faced in traditional hiring methods, 
+such as time-consuming procedures, limited reach, and inefficient communication between 
+job seekers and employers. To overcome these issues, the authors proposed a web-based 
+system where candidates can register, upload resumes, and apply for jobs, while recruiters 
+can post job openings and search for suitable profiles. The system emphasizes ease of access, 
+real-time interaction, and centralized information management to make the hiring process 
+more efficient. The paper highlights the growing need for such digital solutions in the 
+recruitment domain and suggests that online job portals can significantly reduce manual 
+work, speed up the hiring process, and provide better visibility into job opportunities and 
+candidate profiles. 
+
+11 
+ 
+3. S. Mauno, U. Kinnunen, and M. Ruokolainen, “Job demands and resources as antecedents 
+of work engagement: A longitudinal study,” Journal of Vocational Behavior, vol. 70, 
+(2007)[3] 
+The study by S. Mauno, U. Kinnunen, and M. Ruokolainen (2007), titled “Job Demands and 
+Resources as Antecedents of Work Engagement” and published in the Journal of Vocational 
+Behavior, explores how job demands and job resources influence employee work engagement 
+over time. Through a longitudinal approach, the researchers found that while high job 
+demands can lead to stress and burnout, sufficient job resources—such as support from 
+colleagues, feedback, and opportunities for growth—significantly boost engagement and 
+motivation. The study emphasizes that a balance between demands and resources is crucial 
+for sustaining employee well-being and productivity in the workplace 
+4.  M. Gangle, “The only way is up? Employment protection and job mobility among recent 
+entrants to European labour markets,” European Sociological Review, vol. 19,( 2007)[4] 
+M. Gangle’s 2007 study, “The Only Way Is Up? Employment Protection and Job Mobility 
+Among Recent Entrants to European Labour Markets,” published in the European 
+Sociological Review, examines how employment protection laws affect job mobility for 
+newcomers in European labor markets. The study finds that stricter employment protection 
+can limit job mobility, making it harder for recent entrants to move between jobs or advance 
+in their careers. While such protections offer job security, they may also unintentionally 
+hinder upward mobility for new workers trying to establish themselves professionally. 
+5. Hada, B., and Swati Gairola. "Opportunities & Challenges of E-Recruitment." Journal of 
+Management Engineering and Information Technology 2.2 (2015)[5] 
+Hada and Swati Gairola's 2015 paper, “Opportunities & Challenges of E-Recruitment,” 
+explores how digital platforms have transformed the hiring process. The authors highlight the 
+major advantages of e-recruitment, such as cost-effectiveness, wider reach, faster 
+communication, and improved candidate matching. However, they also discuss challenges 
+like data privacy issues, managing large volumes of applications, and the potential lack of 
+personal touch in virtual hiring. The paper concludes that while e-recruitment offers immense 
+potential, organizations must address these challenges to fully leverage its benefits 
+ 
+
+12 
+ 
+2. CHAPTER  
+           FUNCTIONALITIES OF SKILL SPHERE (E-JOB PORTAL) 
+ 
+2.1  Building The Frontend Logic For The Website 
+ 
+This is a breakdown of key points to consider when setting up the frontend logic for 
+Online Job Portal System: 
+ 
+1. User Interface (UI) Design: 
+ Clear and Intuitive Layout: Designed a user-friendly interface with 
+clear navigation and easy-to-understand sections using react which is a 
+popular framework of JavaScript 
+ Responsive Design: Ensure the system adapts seamlessly to different 
+screen sizes (desktop, tablet, mobile) 
+ Visually Appealing: Use a consistent colour scheme, typography to 
+create a professional and engaging look 
+ 
+2. Core Functionalities: 
+ User Registration: Allows both recruiters and candidates to register 
+with basic information such as name, email, phone number, and password 
+ Recruiter Profile: Enables recruiters to create and manage their profiles, 
+including company details, job postings, and assessment configuration 
+ Candidate Profile: Allows candidates to create detailed profiles with 
+educational qualifications, skill sets, experience, and resume uploads 
+ Job Posting: Recruiters can post job openings with relevant details like 
+job title, description, required skills, experience level, and salary range 
+ Application Management: Candidates can apply to jobs and take 
+assessments, recruiters can view submissions, assessment scores, and 
+shortlist candidates. 
+
+13 
+ 
+ Real-Time Email Notifications: Sends automated email notifications to 
+candidates upon selection or rejection, and updates recruiters on new 
+applications 
+ Recruiter Approval (Admin Panel): When a recruiter signs up, the 
+profile request goes to the admin for verification. Only after approval can 
+the recruiter post jobs. An automated email is sent upon profile activation 
+ 
+3.  State Management: 
+ Context API for Global State: Used a state management solution to 
+efficiently manage and update component states, especially for complex 
+interactions 
+ Component-Based Architecture: The frontend is structured using 
+modular, 
+reusable 
+components. 
+This 
+approach 
+improves 
+code 
+maintainability, readability, and makes the UI scalable by allowing 
+isolated development of features and easier debugging 
+ 
+ 
+4. API Integration: 
+ REST API: Developed and consumed a REST API to enable smooth 
+communication between the frontend and backend. The API handles user 
+authentication, job posting, application management, and assessment 
+submissions. 
+ Error Handling: Implemented robust error handling using try-catch 
+blocks in API requests. Errors are caught and displayed to users in real-
+time via toast notifications, ensuring a smooth and user-friendly 
+experience 
+ Data Validation: Performed client-side validation for user inputs (e.g., 
+during registration, job posting, and assessment submission) to ensure 
+only valid data is sent to the backend, enhancing data quality and reducing 
+unnecessary server load 
+ 
+ 
+ 
+
+14 
+ 
+ 2.2  Setting Up The backend and the database 
+ 
+1. API Design: 
+ Designed REST APIs to manage core functionalities such as user 
+authentication, job posting, candidate application, assessment handling, 
+and recruiter decision-making 
+ Defined clear and modular endpoints for each major operation to 
+ensure 
+scalability 
+and 
+maintainability(eg:/api/auth/signup 
+for 
+Signup,/api/jobs/post for Recruiter job posting,/api/candidates/apply for 
+applying) 
+ 
+2. User Authentication and Authorization: 
+ Implemented robust authentication mechanisms using built-in 
+Express.js features along with libraries like Bcrypt.js for secure password 
+hashing and JSON Web Token (JWT) for token-based authentication, 
+ensuring secure access to user accounts 
+ Implemented role-based authorization to control access across the 
+platform. Depending on the role (e.g., Candidate or Recruiter), users get 
+a personalized experience — candidates can apply for jobs and take 
+assessments, while recruiters can post jobs, view applicants, and make 
+hiring decisions. 
+ 
+3. Data Modelling: 
+ Designed a clear and efficient database schema to store user information, 
+job postings, candidate applications, assessment scores, and recruiter 
+decisions 
+ Considered using a NoSQL database MongoDB for flexible data 
+structures and scalability 
+ 
+ 
+ 
+
+15 
+ 
+4. Assessment Scheduling and Job Application Handling: 
+ Implemented a logic-driven flow where candidates can apply for jobs and 
+are immediately prompted to take skill-based assessments, ensuring a 
+streamlined application process 
+ Handled application conflicts by restricting multiple submissions for the 
+same job and triggered real-time email notifications to candidates upon 
+assessment completion, selection, or rejection by the recruiter. 
+ 
+5. Connecting the database with our application: 
+ Established a connection between Mongo DB and the backend server built 
+using Express.js, utilizing the Mongoose library for seamless interaction 
+with the database. 
+ Implemented and integrated four main schemas to structure the data  
+effectively: User Schema, Job Schema, Application Schema, Session 
+schema 
+                
+6. Data Validation and Security: 
+ Implemented data validation to ensure data integrity and prevent invalid 
+input. 
+ Used appropriate security measures to protect sensitive user data like 
+encryption of password using bcrypt.js, access controls via authtoken 
+generated by Json Web token. 
+ 
+ 
+ 
+2.3  Connecting The backend with frontend With Native Fetch 
+ 
+1. Fetch function Integration: 
+ Established communication between the React frontend and Express.js 
+backend using the native fetch() API to send and receive JSON data 
+ Configured secure API calls by including JWT tokens in request headers 
+and handled responses for actions like user authentication, job posting, 
+and application updates 
+ 
+ 
+
+16 
+ 
+2. Making API Requests: 
+ Managed backend URL via environment variables for scalability and 
+made all requests to defined REST endpoints seamlessly within frontend 
+components and context providers 
+ Passed the appropriate API URL and necessary data (e.g., job details, 
+application content, status) as arguments to perform secure and structured 
+HTTP requests. 
+ 
+ 
+3. Error Handling: 
+ Used the try catch block method to handle errors that may occur during 
+API requests 
+ Logged errors to the console for debugging and displayed user-friendly 
+error messages on the frontend during an invalid input 
+ 
+4. Asynchronous Operations: 
+ Used async/await syntax to make API requests asynchronously, 
+preventing blocking of the user interface. Async function ensures that a 
+function will return promise and await ensures that function will move 
+ahead only when promise is resolved 
+ Handle loading states and error states appropriately using loading 
+indicators and error messages 
+ 
+5. Security Considerations: 
+ Implemented token-based authentication using JWT to secure user 
+sessions and protect access to restricted routes based on user roles 
+(candidate, recruiter, admin) 
+ Validated user inputs on both frontend and backend to prevent injection 
+attacks and ensure data integrity 
+ Used secure HTTP headers and CORS configurations to safeguard data 
+transmission and backend APIs. 
+ 
+ 
+ 
+ 
+
+
