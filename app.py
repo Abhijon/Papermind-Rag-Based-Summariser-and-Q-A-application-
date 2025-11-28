@@ -5,8 +5,8 @@ import os
 
 app = Flask(__name__)
 
-# Configure maximum upload size (100 MB)
-app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB in bytes
+# Configure maximum upload size (20 MB) - reduced to prevent MemoryError
+app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024  # 20MB in bytes
 
 @app.route('/', methods=['POST', 'GET'])
 def main():
@@ -234,4 +234,4 @@ if __name__ == '__main__':
     cleanup_old_temp_files(max_age_hours=24)
     print("Cleanup complete. Starting Flask app...")
     
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=5000, debug=True)

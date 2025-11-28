@@ -33,7 +33,7 @@ def generate_summary(source_type, Text,model):
     print(chunk[1])
     for i in range (0,len(chunk[0])):
          #out = summarization(chunk[0][i], min_length = (chunk[1][i]//10), max_length=((chunk[1][i]*4)//10))[0]
-         out = summarization(chunk[0][i] , min_length = (chunk[1][i]//15), truncation=True)[0]
+         out = summarization(chunk[0][i] , min_length = (chunk[1][i]//15), max_length = (chunk[1][i]//3), truncation=True)[0]
          summary += out['summary_text']+"<br /><br />"
          print(out['summary_text'])
     return summary
